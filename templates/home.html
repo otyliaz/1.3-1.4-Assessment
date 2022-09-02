@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}My library{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="icon" type="image/png" href="../static/images/favicon.png">
+    </head>
+    <body>
+        <header>
+            <div class="navbar"> 
+                <ul>
+                    <div class="nav-left">
+                        <li><a class="logo" href=""><img id="logo" src="../static/images/logo.png" alt="logo"></a></li>
+                    </div>
+                    <div class="nav-centre">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Borrow</a></li>
+                    </div>
+                    <div class="nav-right">
+                        <li><a href="#">Account</a></li>
+                    </div>
+                </ul>
+            </div>
+         </header>
+        <div id="content">
+            <h1>My Library</h1>
+            <p>Search for a book!</p>
+            <div id="form">
+                <form action="" method="post">
+                    <input type="text" name="search" placeholder="Type here..." required>
+                    <input type="submit" value="Search!">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

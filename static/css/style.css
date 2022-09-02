@@ -1,0 +1,130 @@
+/*
+#1e1a1d
+#436436
+#BFACB5
+#E5F2C9
+#D56F3E*/
+
+* {
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    background-color: #1E1A1D;
+    background: url("../images/greyblur.jpg") no-repeat;
+    background-position: fixed center;
+    background-size: cover;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+}
+
+ul li {
+    float: right;
+}
+
+ul li a:not(.logo) {
+    font-family: monospace;
+    display: block;
+    color: #E5F2C9;
+    text-align: center;
+    padding: 2vh 2vw;
+    text-decoration: none;
+    transition: 0.5s;
+    font-size: 18px;
+    line-height: 20px;
+}
+  
+ul li a:hover:not(.logo){
+    background-color: #E5F2C9;
+    color: #1E1A1D;
+    font-size: 20px;
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+
+ul li a:active:not(.logo) {
+    color: #D56F3E;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-centre {
+    display: inline-block;
+}
+
+.nav-right {
+    float: right;
+}
+
+#logo {
+    margin: 10px 20px;
+    width: 40px;
+    height: 40px;
+    transition: 0.5s;
+}
+
+#logo:hover {
+    width: 50px;
+    height: 50px;
+}
+
+#content {
+    position: relative;
+    top: 30%;
+    left: 10%;
+}
+
+h1 {
+    font-family: "Book Antiqua";
+    color: #BFACB5;
+    margin: 0px;
+    font-size: 10vh;
+}
+
+p {
+    font-size: 5vh;
+    color: #E5F2C9;
+    margin-top: 0.5%;
+    margin-bottom: 0px;
+}
+
+form {
+    margin-top: 0.5%;
+}
+
+@media screen and (max-width: 600px) {
+    ul li a {
+      font-size: 14px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    ul li a:hover {
+        font-size: 16px;
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    ul li a {
+        line-height: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
