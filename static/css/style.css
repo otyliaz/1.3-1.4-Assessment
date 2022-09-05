@@ -1,7 +1,7 @@
 /*
 #1e1a1d
 #436436
-#BFACB5
+#B7A8FF
 #E5F2C9
 #D56F3E*/
 
@@ -84,17 +84,31 @@ ul li a:active:not(.logo) {
     height: 50px;
 }
 
-#content {
+.content {
     position: relative;
     top: 30%;
     left: 10%;
 }
 
+#searchcontent {
+    top: 20%;
+    left: 5%;
+}
+
+#h1search {
+    color: #E5F2C9;
+    font-size: 5vh;
+}
+
 h1 {
     font-family: "Book Antiqua";
-    color: #BFACB5;
+    color: #B7A8FF;
     margin: 0px;
     font-size: 10vh;
+}
+
+#booktitle {
+    color: #D56F3E;
 }
 
 p {
@@ -107,6 +121,8 @@ p {
 form {
     margin-top: 0.5%;
 }
+
+/*nav bar for small screens*/
 
 @media screen and (max-width: 600px) {
     ul li a {

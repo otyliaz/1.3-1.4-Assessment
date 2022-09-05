@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Search results for: {{term}}</title>
-        <link rel="icon" type="image/png" href="../static/images/favicon.png">
-    </head>
-    <body>
-        <h1>here's what we found that matches "{{searchterm}}"</h1>
+{% extends "home.html" %}
+    <title>{% block title %}Search results for: {{term}}{% endblock %}
+    {% block content%}
+    <div class="content" id="searchcontent">
+        <h1 id="h1search">Here's what we found that matches "{{searchterm}}"</h1>
         {% for book in books %}
         <div> 
-            <h2>{{book.title}}</h2>
+            <h2 id="booktitle">{{book.title}}</h2>
             <p>{{book.author}}</p>
         </div>
         {% endfor %}
-    </body>
+    </div>
+    {% endblock %}
 </html>

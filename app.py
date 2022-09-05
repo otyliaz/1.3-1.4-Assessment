@@ -20,7 +20,7 @@ def home():
 def search(term):
     conn = get_db_connection()
     searchterm="%"+term+"%"
-    books = conn.execute('SELECT * FROM books WHERE title OR author LIKE ?', (searchterm,)).fetchall()
+    books = conn.execute('SELECT * FROM books WHERE title LIKE ? OR author LIKE ?', (searchterm, searchterm,)).fetchall()
     conn.close()
     return render_template('search.html', searchterm = term, books=books)
 
