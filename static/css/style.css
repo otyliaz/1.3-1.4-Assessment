@@ -3,7 +3,8 @@
 #436436
 #B7A8FF
 #E5F2C9
-#D56F3E*/
+#E29A79
+*/
 
 * {
     padding: 0px;
@@ -13,7 +14,7 @@
 body{
     margin: 0px;
     background-color: #1E1A1D;
-    background: url("../images/greyblur.jpg") no-repeat;
+    background: url("../images/background.jpg") no-repeat;
     background-position: fixed center;
     background-size: cover;
     overflow-x: hidden;
@@ -57,7 +58,7 @@ ul li a:hover:not(.logo){
 }
 
 ul li a:active:not(.logo) {
-    color: #D56F3E;
+    color: #E29A79;
 }
 
 .nav-left {
@@ -97,7 +98,7 @@ ul li a:active:not(.logo) {
 
 #h1search {
     color: #E5F2C9;
-    font-size: 5vh;
+    font-size: 6vh;
 }
 
 h1 {
@@ -107,15 +108,21 @@ h1 {
     font-size: 10vh;
 }
 
-#booktitle {
-    color: #D56F3E;
-}
-
-p {
+h2 {
     font-size: 5vh;
     color: #E5F2C9;
     margin-top: 0.5%;
-    margin-bottom: 0px;
+    margin-bottom: 1%;
+}
+
+#booktitle {
+    color: #E29A79;
+    font-size: 4vh;
+}
+
+p {
+    color: #E5F2C9;
+    font-size: 3vh;
 }
 
 form {

@@ -5,8 +5,13 @@
         <h1 id="h1search">Here's what we found that matches "{{searchterm}}"</h1>
         {% for book in books %}
         <div> 
-            <h2 id="booktitle">{{book.title}}</h2>
+             <h2 id="booktitle">{{book.title}}</h2>
             <p>{{book.author}}</p>
+            {% if not book.year_published %}
+                <p>Unknown</p> 
+            {% else %}
+                <p>{{book.year_published}}</p>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
