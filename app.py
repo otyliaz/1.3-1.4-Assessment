@@ -24,5 +24,12 @@ def search(term):
     conn.close()
     return render_template('search.html', searchterm = term, books=books)
 
+@app.route('/explore')
+def explore():
+    conn = get_db_connection()
+    books = conn.execute('SELECT * FROM books',).fetchall()
+    conn.close()
+    return render_template('explore.html', books=books)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

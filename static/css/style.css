@@ -1,19 +1,11 @@
-/*
-#1e1a1d
-#436436
-#B7A8FF
-#E5F2C9
-#E29A79
-*/
-
 * {
     padding: 0px;
     box-sizing: border-box;
 }
 
-body{
+/*body for home.html - background image*/
+body {
     margin: 0px;
-    background-color: #1E1A1D;
     background: url("../images/background.jpg") no-repeat;
     background-position: fixed center;
     background-size: cover;
@@ -21,6 +13,8 @@ body{
     height: 100vh;
     width: 100vw;
 }
+
+/*nav bar*/
 
 ul {
     list-style-type: none;
@@ -40,7 +34,7 @@ ul li {
 ul li a:not(.logo) {
     font-family: monospace;
     display: block;
-    color: #E5F2C9;
+    color: #EFF7DE;
     text-align: center;
     padding: 2vh 2vw;
     text-decoration: none;
@@ -50,7 +44,7 @@ ul li a:not(.logo) {
 }
   
 ul li a:hover:not(.logo){
-    background-color: #E5F2C9;
+    background-color: #EFF7DE;
     color: #1E1A1D;
     font-size: 20px;
     padding-right: 3vw;
@@ -63,10 +57,6 @@ ul li a:active:not(.logo) {
 
 .nav-left {
     float: left;
-}
-
-.nav-centre {
-    display: inline-block;
 }
 
 .nav-right {
@@ -85,19 +75,28 @@ ul li a:active:not(.logo) {
     height: 50px;
 }
 
+/*search bar on home.html*/
+form {
+    margin-top: 0.5%;
+}
+
+/*position of home.html content*/
 .content {
     position: relative;
     top: 30%;
     left: 10%;
 }
 
-#searchcontent {
+/*position of search.html content*/
+#content_search {
     top: 20%;
     left: 5%;
+    margin-bottom: 50%;
 }
 
-#h1search {
-    color: #E5F2C9;
+/*fonts and colours and sizes*/
+#h1_search {
+    color: #EFF7DE;
     font-size: 6vh;
 }
 
@@ -110,7 +109,7 @@ h1 {
 
 h2 {
     font-size: 5vh;
-    color: #E5F2C9;
+    color: #EFF7DE;
     margin-top: 0.5%;
     margin-bottom: 1%;
 }
@@ -121,12 +120,8 @@ h2 {
 }
 
 p {
-    color: #E5F2C9;
+    color: #EFF7DE;
     font-size: 3vh;
-}
-
-form {
-    margin-top: 0.5%;
 }
 
 /*nav bar for small screens*/

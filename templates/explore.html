@@ -1,11 +1,10 @@
 {% extends "home.html" %}
-    <title>{% block title %}Search results for: {{term}}{% endblock %}
-    {% block content%}
+{% block content%}
     <div class="content" id="content_search">
-        <h1 id="h1_search">Here's what we found that matches "{{searchterm}}"</h1>
+        <h1 id="h1_search">Here are all the books in my collection :0</h1>
         {% for book in books %}
         <div> 
-             <h2 id="booktitle">{{book.title}}</h2>
+            <h2 id="booktitle">{{book.title}}</h2>
             <p>{{book.author}}</p>
             {% if not book.year_published %}
                 <p>Year Published: Unknown</p> 
@@ -15,5 +14,4 @@
         </div>
         {% endfor %}
     </div>
-    {% endblock %}
-</html>
+{% endblock %}
