@@ -3,17 +3,21 @@
     box-sizing: border-box;
 }
 
-/*body for home.html - background image*/
-body {
+/*background home.html - background image*/
+html {
     margin: 0px;
-    background: url("../images/background.jpg") no-repeat;
-    background-position: fixed center;
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    height: 100%;
     overflow-x: hidden;
-    height: 100vh;
-    width: 100vw;
 }
 
+body {
+    height: 100%;
+}
 /*nav bar*/
 
 ul {
@@ -122,6 +126,11 @@ h2 {
 p {
     color: #EFF7DE;
     font-size: 3vh;
+}
+
+#book {
+    border: 2px;
+    border-color: #E29A79;
 }
 
 /*nav bar for small screens*/

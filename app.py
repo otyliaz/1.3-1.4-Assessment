@@ -1,3 +1,4 @@
+from re import L
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
@@ -20,16 +21,22 @@ def home():
 def search(term):
     conn = get_db_connection()
     searchterm="%"+term+"%"
-    books = conn.execute('SELECT * FROM books WHERE title LIKE ? OR author LIKE ?', (searchterm, searchterm,)).fetchall()
+    books = conn.execute('SELECT * FROM books WHERE title LIKE ? OR author LIKE ? ORDER BY title asc', (searchterm, searchterm,)).fetchall()
     conn.close()
     return render_template('search.html', searchterm = term, books=books)
 
 @app.route('/explore')
 def explore():
     conn = get_db_connection()
-    books = conn.execute('SELECT * FROM books',).fetchall()
+    books = conn.execute('SELECT * FROM books ORDER BY title asc',).fetchall()
     conn.close()
     return render_template('explore.html', books=books)
+
+@app.route('/add')
+def add():
+    conn = get_db_connection()
+    return render_template('add.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

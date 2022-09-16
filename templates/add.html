@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+{% block title %}Add a book to the database{% endblock %}
+{% block content %}
+<div class="content" id="content_search">
+    <div id="form_addbook">
+        <form action="" method="post">
+            <label for="title">Title:</label>
+            <input type="text" name="title" placeholder="Type here..." required> <br>
+            <label for="author">Author:</label>
+            <input type="text" name="author" placeholder="Type here..." required> <br>
+            <input type="submit" value="Enter book">
+        </form>
+    </div>
+</div>
+{% endblock %}

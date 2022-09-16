@@ -1,4 +1,5 @@
 {% extends "home.html" %}
+{% block title %}Explore{% endblock %}
 {% block content%}
     <div class="content" id="content_search">
         <h1 id="h1_search">Here are all the books in my collection :0</h1>
@@ -11,6 +12,8 @@
             {% else %}
                 <p>{{book.year_published}}</p>
             {% endif %}
+            <p>{{book.language}}</p>
+            <p>ISBN: {{book.isbn}}</p>
         </div>
         {% endfor %}
     </div>
