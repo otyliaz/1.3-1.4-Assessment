@@ -6,6 +6,7 @@
         {% for book in books %}
         <div> 
             <h2 id="booktitle">{{book.title}}</h2>
+            <h3>Book ID: {{book.bookid}}</h3>
             <p>{{book.author}}</p>
             {% if not book.year_published %}
                 <p>Year Published: Unknown</p> 

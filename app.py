@@ -32,10 +32,27 @@ def explore():
     conn.close()
     return render_template('explore.html', books=books)
 
-@app.route('/add')
+@app.route('/add', methods=['POST', 'GET'])
 def add():
-    conn = get_db_connection()
+    if request.method == 'POST':
+        add_title = request.form['title']
+        add_author = request.form['author']
+
+        conn = get_db_connection()
+        conn.execute('INSERT INTO books (title, author) VALUES(?,?)', (add_title, add_author))
+        conn.commit()
+        conn.close()
+    
+    if request.method == 'POST':
+        remove_id = request.form['remove_id']
+        
+        conn = get_db_connection()
+        conn.execute('DELETE FROM books WHERE bookid = ?', (remove_id))
+        conn.commit()
+        conn.close()
+
     return render_template('add.html')
+
 
 
 if __name__ == '__main__':

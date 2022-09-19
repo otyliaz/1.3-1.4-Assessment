@@ -1,19 +1,40 @@
-{% extends "home.html" %}
-    {% block title %}Search results for: {{term}}{% endblock %}
-    {% block content%}
-    <div class="content" id="content_search">
-        <h1 id="h1_search">Here's what we found that matches "{{searchterm}}"</h1>
-        {% for book in books %}
-        <div id="book"> 
-             <h2 id="booktitle">{{book.title}}</h2>
-            <p>{{book.author}}</p>
-            {% if not book.year_published %}
-                <p>Year Published: Unknown</p> 
-            {% else %}
-                <p>{{book.year_published}}</p>
-            {% endif %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search results for: {{term}}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="icon" type="image/png" href="../static/images/favicon.png">
+    </head>
+    <body>
+        <header>
+            <div class="navbar"> 
+                <ul>
+                    <div class="nav-left">
+                        <li><a class="logo" href="/"><img id="logo" src="../static/images/logo.png" alt="logo"></a></li>
+                    </div>
+                    <div class="nav-right">
+                        <li><a href="#">About</a></li>
+                        <li><a href="/explore">Explore</a></li>
+                        <li><a href="/add">Add Book</a></li>
+                        <li><a href="#">Borrow</a></li>
+                    </div>
+                </ul>
+            </div>
+         </header>
+         <div class="content" id="content_search">
+            <h1 id="h1_search">Here's what we found that matches "{{searchterm}}"</h1>
+            {% for book in books %}
+            <div id="book"> 
+                 <h2 id="booktitle">{{book.title}}</h2>
+                <p>{{book.author}}</p>
+                {% if not book.year_published %}
+                    <p>Year Published: Unknown</p> 
+                {% else %}
+                    <p>{{book.year_published}}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    {% endblock %}
+    </body>
 </html>

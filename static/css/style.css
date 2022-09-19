@@ -4,7 +4,7 @@
 }
 
 /*background home.html - background image*/
-html {
+#html_home {
     margin: 0px;
     background: url("../images/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -12,6 +12,14 @@ html {
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    margin: 0px;
+    background-color: #1E1A1D;
+    height: 100%;
+    background-size: cover;
     overflow-x: hidden;
 }
 
@@ -131,6 +139,11 @@ p {
 #book {
     border: 2px;
     border-color: #E29A79;
+}
+
+label {
+    color: #EFF7DE;
+    font-size: 3vh;
 }
 
 /*nav bar for small screens*/

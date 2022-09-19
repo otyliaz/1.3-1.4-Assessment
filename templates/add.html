@@ -2,13 +2,23 @@
 {% block title %}Add a book to the database{% endblock %}
 {% block content %}
 <div class="content" id="content_search">
+    <h1>Add or remove a book</h1>
+    <h2>Add a book:</h2>
     <div id="form_addbook">
         <form action="" method="post">
             <label for="title">Title:</label>
-            <input type="text" name="title" placeholder="Type here..." required> <br>
+            <input type="text" name="title" placeholder="Type here..."> <br>
             <label for="author">Author:</label>
-            <input type="text" name="author" placeholder="Type here..." required> <br>
+            <input type="text" name="author" placeholder="Type here..."> <br>
             <input type="submit" value="Enter book">
+        </form>
+    </div>
+    <h2>Remove a book:</h2>
+    <div id="form_removebook">
+        <form action="" method="post">
+            <label for="title">ID of book to remove:</label>
+            <input type="text" name="remove_id" placeholder="Type here...">
+            <input type="submit" value="DELETE">
         </form>
     </div>
 </div>
