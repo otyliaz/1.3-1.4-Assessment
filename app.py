@@ -1,4 +1,3 @@
-from re import L
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
@@ -42,18 +41,20 @@ def add():
         conn.execute('INSERT INTO books (title, author) VALUES(?,?)', (add_title, add_author))
         conn.commit()
         conn.close()
-    
-    if request.method == 'POST':
-        remove_id = request.form['remove_id']
-        
-        conn = get_db_connection()
-        conn.execute('DELETE FROM books WHERE bookid = ?', (remove_id))
-        conn.commit()
-        conn.close()
 
     return render_template('add.html')
 
-
+@app.route('/delete', methods=['POST', 'GET'])
+def delete():
+    if request.method == 'post':
+        remover_id = request.form['remove_id']
+        
+        conn = get_db_connection()
+        conn.execute('DELETE FROM books WHERE bookid = ?', (remover_id))
+        conn.commit()
+        conn.close()
+    
+    return render_template('delete.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
