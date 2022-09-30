@@ -46,11 +46,12 @@ def add():
 
 @app.route('/delete', methods=['POST', 'GET'])
 def delete():
-    if request.method == 'post':
-        remover_id = request.form['remove_id']
-        
+    if request.method == 'POST':
+        remove_id = request.form['remove_id']
+        print(remove_id)
+
         conn = get_db_connection()
-        conn.execute('DELETE FROM books WHERE bookid = ?', (remover_id))
+        conn.execute('DELETE FROM books WHERE bookid = ?', (remove_id,))
         conn.commit()
         conn.close()
     
