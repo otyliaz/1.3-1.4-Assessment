@@ -1,9 +1,10 @@
 * {
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/*background home.html - background image*/
+/*BACKGROUND IMAGE home.html*/
 #html_home {
     margin: 0px;
     background: url("../images/background.jpg") no-repeat center center fixed;
@@ -26,67 +27,123 @@ html {
 body {
     height: 100%;
 }
-/*nav bar*/
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+/*NAV BAR*/
+
+/*LOGO*/
+
+header {
     position: fixed;
-    top: 0;
     width: 100%;
-    text-align: center;
-    background-color: #1E1A1D;
+    z-index: 2;
 }
 
-ul li {
-    float: right;
-}
-
-ul li a:not(.logo) {
-    font-family: monospace;
-    display: block;
-    color: #EFF7DE;
-    text-align: center;
-    padding: 2vh 2vw;
-    text-decoration: none;
-    transition: 0.5s;
-    font-size: 18px;
-    line-height: 20px;
-}
-  
-ul li a:hover:not(.logo){
-    background-color: #EFF7DE;
-    color: #1E1A1D;
-    font-size: 20px;
-    padding-right: 3vw;
-    padding-left: 3vw;
-}
-
-ul li a:active:not(.logo) {
-    color: #E29A79;
-}
-
-.nav-left {
-    float: left;
-}
-
-.nav-right {
-    float: right;
-}
-
-/*logo*/
 #logo {
-    margin: 10px;
-    width: 20px;
-    height: 20px;
-    transition: 0.5s;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+/*maybe transform logo on hover*/
+
+.navbar {
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1E1A1D;
+    top: 0;
 }
 
-#logo:hover {
-    width: 25px;
-    height: 25px;
+li {
+    list-style: none;
+}
+
+.nav_links {
+    text-align: center;
+    overflow: hidden;
+}
+
+.nav_links a {
+    color: #EFF7DE;
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+.menu li a {
+    text-decoration: none;
+}
+
+/*RESPONSIVE NAVBAR*/
+/* CHECKBOX THING */
+input[type=checkbox] {
+    display: none;
+} 
+
+/*HAMBURGER*/
+.hamburger {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+}
+
+/* APPLYING MEDIA QUERIES */
+/*BIG SCREENS*/
+@media screen and (min-width: 769px) {  
+    .menu li a {
+        display: block;
+        text-decoration: none;
+        color: #EFF7DE;
+        padding: 20px 14px;
+        transition: 0.5s;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .menu li a:hover {
+        background-color: #EFF7DE;
+        font-size: 20px;
+        padding: 19px 20px;
+        color: #1E1A1D;
+    }
+}
+
+/*SMALL SCREENS*/
+@media screen and (max-width: 768px) {
+   .menu { 
+        display:none;
+        position: absolute;
+        background-color: #1E1A1D;
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 16px 0;
+    }
+
+    .menu li {
+        padding: 5px 14px;
+    }
+
+    .menu li:hover {
+        display: inline-block;
+        background-color:#504c4f;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
+    .menu li + li {
+        margin-top: 12px;
+    }
+
+    input[type=checkbox]:checked ~ .menu{
+        display: block;
+    }
+    .hamburger {
+        display: block;
+    }
 }
 
 /*search bar on home.html*/
@@ -97,8 +154,9 @@ form {
 /*position of home.html content*/
 .content {
     position: relative;
-    top: 30%;
+    top: 35%;
     left: 10%;
+    z-index: 1;
 }
 
 /*position of search.html content*/
@@ -106,6 +164,7 @@ form {
     top: 20%;
     left: 5%;
     margin-bottom: 50%;
+    z-index: 1;
 }
 
 /*fonts and colours and sizes*/
@@ -138,7 +197,7 @@ p {
     font-size: 3vh;
 }
 
-#book {
+.book {
     border: 2px;
     border-color: #E29A79;
 }
@@ -146,27 +205,4 @@ p {
 label {
     color: #EFF7DE;
     font-size: 3vh;
-}
-
-/*nav bar for small screens*/
-
-@media screen and (max-width: 600px) {
-    ul li a {
-      font-size: 14px;
-      padding-right: 10px;
-      padding-left: 10px;
-    }
-    ul li a:hover {
-        font-size: 16px;
-        padding-right: 14px;
-        padding-left: 14px;
-    }
-}
-
-@media screen and (max-height: 400px) {
-    ul li a {
-        line-height: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-    }
 }

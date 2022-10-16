@@ -8,19 +8,24 @@
     </head>
     <body>
         <header>
-            <div class="navbar"> 
-                <ul>
-                    <div class="nav-left">
-                        <li><a class="logo" href="/"><img id="logo" src="../static/images/logo.png" alt="logo"></a></li>
-                    </div>
-                    <div class="nav-right">
-                        <li><a href="/delete">Delete book</a></li>
+            <nav class="navbar">
+                <!-- LOGO -->
+                <div class="logo">
+                    <a class="logo" href="/"><img id="logo" src="../static/images/logo.png" alt="logo"></a>
+                </div>
+                <ul class="nav_links">
+                    <!-- CHECKBOX THING -->
+                    <input type="checkbox" id="checkbox_toggle" />
+                    <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+                    <!-- NAV LINKS -->
+                    <div class="menu">
                         <li><a href="/explore">Explore</a></li>
-                        <li><a href="/add">Add Book</a></li>
-                        <li><a href="#">Borrow</a></li>
+                        <li><a href="/add">Add book</a></li>
+                        <li><a href="/delete">Delete book</a></li>
+                        <li><a href="/borrow">Borrow?</a></li>
                     </div>
                 </ul>
-            </div>
+            </nav>
          </header>
         {% block content %}
         <div class="content">

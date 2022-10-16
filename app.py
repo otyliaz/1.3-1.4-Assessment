@@ -11,26 +11,35 @@ def get_db_connection():
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
-        search = request.form['search']
-        return redirect(url_for('search', term = search))
+        term = request.form['search']
+        return redirect(url_for('search', term=term))
     
     return render_template('home.html')
 
+#search page
 @app.route('/search/<term>')
 def search(term):
     conn = get_db_connection()
     searchterm="%"+term+"%"
     books = conn.execute('SELECT * FROM books WHERE title LIKE ? OR author LIKE ? ORDER BY title asc', (searchterm, searchterm,)).fetchall()
     conn.close()
+
     return render_template('search.html', searchterm = term, books=books)
 
-@app.route('/explore')
+#explore
+@app.route('/explore', methods=['POST', 'GET'])
 def explore():
     conn = get_db_connection()
     books = conn.execute('SELECT * FROM books ORDER BY title asc',).fetchall()
     conn.close()
+
     return render_template('explore.html', books=books)
 
+@app.route('/borrow')
+def borrow():
+    return render_template('borrow.html')
+
+#add book
 @app.route('/add', methods=['POST', 'GET'])
 def add():
     if request.method == 'POST':
@@ -44,6 +53,7 @@ def add():
 
     return render_template('add.html')
 
+#delete book
 @app.route('/delete', methods=['POST', 'GET'])
 def delete():
     if request.method == 'POST':
