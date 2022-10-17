@@ -35,9 +35,23 @@ def explore():
 
     return render_template('explore.html', books=books)
 
-@app.route('/borrow')
-def borrow():
-    return render_template('borrow.html')
+@app.route('/borrow/<int:bookid>', methods=['POST', 'GET'])
+def borrow(bookid):
+    bookid=(int(bookid))
+
+    if request.method == 'POST':
+        borrow_fname = request.form['fname']
+        borrow_lname = request.form['lname']
+        borrow_phonenum = request.form['phonenum']
+        borrow_address = request.form['address']
+        borrow_email = request.form['email']
+
+        conn = get_db_connection()
+        conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
+        conn.commit()
+        conn.close()
+
+    return render_template('borrow.html', bookid=bookid)
 
 #add book
 @app.route('/add', methods=['POST', 'GET'])
@@ -45,9 +59,12 @@ def add():
     if request.method == 'POST':
         add_title = request.form['title']
         add_author = request.form['author']
+        add_year = request.form['year']
+        add_language = request.form['language']
+        add_isbn = request.form['isbn']
 
         conn = get_db_connection()
-        conn.execute('INSERT INTO books (title, author) VALUES(?,?)', (add_title, add_author))
+        conn.execute('INSERT INTO books (title, author, year_published, language, isbn) VALUES(?,?,?,?,?)', (add_title, add_author, add_year, add_language, add_isbn))
         conn.commit()
         conn.close()
 

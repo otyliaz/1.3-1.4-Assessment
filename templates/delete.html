@@ -1,8 +1,18 @@
 {% extends "home.html" %}
 {% block title %}delete a book from the database{% endblock %}
+
+{% block menu%}
+<div class="menu">
+    <li><a href="/explore">Explore</a></li>
+    <li><a href="/add">Add book</a></li>
+    <li><a href="/delete" class="active_page">Delete book</a></li>
+    <li><a href="/borrowers">Borrowers</a></li>
+</div>
+{% endblock%}
+
 {% block content %}
 <div class="content" id="content_search">
-    <h2>Remove a book:</h2>
+    <h1>Remove a book:</h1>
     <div id="form_removebook">
         <form action="" method="post">
             <label for="title">ID of book to remove:</label>

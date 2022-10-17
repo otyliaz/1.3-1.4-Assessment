@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Search results for: {{term}}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <link rel="icon" type="image/png" href="../static/images/favicon.png">
-    </head>
-    <body>
-        <h1>if u see this it works</h1>
-    </body>
-</html>
+{% extends "home.html" %}
+{% block title %}Borrow book {{bookid}}{% endblock %}
+
+{% block menu%}
+<div class="menu">
+    <li><a href="/explore">Explore</a></li>
+    <li><a href="/add">Add book</a></li>
+    <li><a href="/delete">Delete book</a></li>
+    <li><a href="/borrowers">Borrowers</a></li>
+</div>
+{% endblock%}
+
+{% block content%}
+<div class="content">
+    <h1>Borrow this book</h1>
+    <h2>Enter your details below</h2>
+    <div class="form">
+        <form action="" method="post">
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" placeholder="Type here..." required><br>
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname" id="lname" placeholder="Type here..." required><br>
+            <label for="phonenum">Phone number:</label>
+            <input type="text" name="phonenum" id="phonenum" placeholder="Type here..." required><br>
+            <label for="address">Address:</label>
+            <input type="text" name="address" id="address" placeholder="Type here..." required><br>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" placeholder="Type here..." required><br>
+            <input type="submit" value="Borrow!">
+        </form>
+    </div>
+</div>
+{% endblock %}

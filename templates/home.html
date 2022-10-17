@@ -18,12 +18,14 @@
                     <input type="checkbox" id="checkbox_toggle" />
                     <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                     <!-- NAV LINKS -->
+                    {% block menu%}
                     <div class="menu">
                         <li><a href="/explore">Explore</a></li>
                         <li><a href="/add">Add book</a></li>
                         <li><a href="/delete">Delete book</a></li>
-                        <li><a href="/borrow">Borrow?</a></li>
+                        <li><a href="#">Loans</a></li>
                     </div>
+                    {% endblock%}
                 </ul>
             </nav>
          </header>
@@ -31,9 +33,9 @@
         <div class="content">
             <h1>My Library</h1>
             <h2>Enter a key word to search for a book!</h2>
-            <div id="form">
+            <div class="form">
                 <form action="" method="post">
-                    <input type="text" name="search" placeholder="Type here..." required>
+                    <input type="text" name="search" id="search" placeholder="Type here..." required>
                     <input type="submit" value="Search!">
                 </form>
             </div>
