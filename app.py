@@ -84,5 +84,9 @@ def delete():
     
     return render_template('delete.html')
 
+@app.route('/loans')
+def loans():
+    return render_template('loans.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

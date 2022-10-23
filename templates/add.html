@@ -6,7 +6,7 @@
     <li><a href="/explore">Explore</a></li>
     <li><a href="/add" class="active_page">Add book</a></li>
     <li><a href="/delete">Delete book</a></li>
-    <li><a href="/borrowers">Borrowers</a></li>
+    <li><a href="/loans">Loans</a></li>
 </div>
 {% endblock%}
 
@@ -17,15 +17,15 @@
     <div id="form_addbook">
         <form action="" method="post">
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title" placeholder="Type here..."> <br>
+            <input type="text" name="title" id="title" placeholder="Type here..." required> <br>
             <label for="author">Author:</label>
-            <input type="text" name="author" id="author" placeholder="Type here..."> <br>
+            <input type="text" name="author" id="author" placeholder="Type here..." required> <br>
             <label for="year">Year Published:</label>
             <input type="text" name="year" id="year" placeholder="Type here..."> <br>
             <label for="language">Language:</label>
             <input type="text" name="language" id="language" placeholder="Type here..."> <br>
             <label for="isbn">ISBN:</label>
-            <input type="text" name="isbn" id="isbn" placeholder="Type here..."> <br>
+            <input type="text" name="isbn" id="isbn" placeholder="Type here..." minlength="10" maxlength="13"> <br>
             <input type="submit" value="Enter book">
         </form>
     </div>

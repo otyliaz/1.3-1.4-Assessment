@@ -33,17 +33,15 @@ body {
 /*LOGO*/
 
 header {
-    position: fixed;
     width: 100%;
     z-index: 2;
+    position: fixed;
 }
 
-#logo {
-    margin-left: 10px;
-    width: 30px;
-    height: 30px;
+nav {
+    box-shadow: 0 2px 4px 0 #050a10;  
+    position: sticky;
 }
-/*maybe transform logo on hover*/
 
 .navbar {
     font-family: monospace;
@@ -75,6 +73,10 @@ li {
 
 .menu li a {
     text-decoration: none;
+}
+
+.menu li a.active_page {
+    color: #6bad58;
 }
 
 /*RESPONSIVE NAVBAR*/
@@ -113,10 +115,13 @@ input[type=checkbox] {
     .menu li a:active {
         color: #D52941;
     }
-
-    .menu li a.active_page {
-        color: #436436;
+    
+    #logo {
+        margin-left: 10px;
+        width: 30px;
+        height: 30px;
     }
+    /*maybe transform logo on hover*/
 }
 
 /*SMALL SCREENS*/
@@ -155,7 +160,16 @@ input[type=checkbox] {
     }
     .hamburger {
         display: block;
+        padding: 10px;
     }
+
+    #logo {
+        display: block;
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+    }
+    /*maybe transform logo on hover*/
 }
 
 /*search bar on home.html*/
@@ -190,6 +204,7 @@ h1 {
     color: #cc9be6;
     margin: 0px;
     font-size: 10vh;
+    text-shadow: 2px 2px 5px black;
 }
 
 h2 {
@@ -197,6 +212,7 @@ h2 {
     color: #E7EBEE;
     margin-top: 0.5%;
     margin-bottom: 1%;
+    text-shadow: 1px 1px 5px #1b1b1bd8;
 }
 
 #booktitle {
