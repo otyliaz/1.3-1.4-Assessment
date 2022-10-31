@@ -183,6 +183,7 @@ form {
     top: 35%;
     left: 10%;
     z-index: 1;
+    padding-bottom: 10px;
 }
 
 /*position of search.html content*/
@@ -228,9 +229,20 @@ p {
 .book {
     border: 2px;
     border-color: #F78764;
+    padding: 5px;
 }
 
 label {
     color: #E7EBEE;
     font-size: 3vh;
+}
+
+.book {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 500px;
+    border: 5px solid #E7EBEE;
+    background: transparent;
+    margin: 10px 0px;
 }
