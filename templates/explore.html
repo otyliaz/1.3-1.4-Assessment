@@ -29,9 +29,11 @@
             {% else %}
                 <p>ISBN: {{book.isbn}}</p>
             {% endif %}
+            
             <div id="borrow_button">
                 <a href="{{ url_for('borrow', bookid=book.bookid) }}"><button type="button">BORROW</button></a>
             </div>
+            
         </div>
         {% endfor %}
     </div>

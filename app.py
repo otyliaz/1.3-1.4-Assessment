@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -35,24 +36,6 @@ def explore():
 
     return render_template('explore.html', books=books)
 
-@app.route('/borrow/<int:bookid>', methods=['POST', 'GET'])
-def borrow(bookid):
-    bookid=(int(bookid))
-
-    if request.method == 'POST':
-        borrow_fname = request.form['fname']
-        borrow_lname = request.form['lname']
-        borrow_phonenum = request.form['phonenum']
-        borrow_address = request.form['address']
-        borrow_email = request.form['email']
-
-        conn = get_db_connection()
-        conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
-        conn.commit()
-        conn.close()
-
-    return render_template('borrow.html', bookid=bookid)
-
 #add book
 @app.route('/add', methods=['POST', 'GET'])
 def add():
@@ -84,8 +67,33 @@ def delete():
     
     return render_template('delete.html')
 
+
+@app.route('/borrow/<int:bookid>', methods=['POST', 'GET'])
+def borrow(bookid):
+    bookid=(int(bookid))
+
+    if request.method == 'POST':
+        borrow_fname = request.form['fname']
+        borrow_lname = request.form['lname']
+        borrow_phonenum = request.form['phonenum']
+        borrow_address = request.form['address']
+        borrow_email = request.form['email']
+
+        conn = get_db_connection()
+        conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
+        conn.commit()
+        conn.close()
+
+    return render_template('borrow.html', bookid=bookid)
+
 @app.route('/loans')
 def loans():
+    conn = get_db_connection()
+        #how do i get the bookid and borrowerid 
+    conn.execute('INSERT INTO books_borrowed(bookid , borrowerid ) VALUES ( ( SELECT bookid FROM books WHERE bookid = "?" ) , bookid( SELECT borrowerid FROM borrowers WHERE borrowerid = "?" ))', (borrowerid,bookid))
+    conn.commit()
+    conn.close()
+    
     return render_template('loans.html')
 
 if __name__ == '__main__':
