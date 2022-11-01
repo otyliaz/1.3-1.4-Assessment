@@ -12,9 +12,13 @@
 
 {% block content%}
     <div class="content" id="content_search">
-        <h1 id="h1_search">Books that are borrowed:</h1>
-        <form action="">
-            <input type="hidden" id="bookid" name="bookid" value="1">
-        </form>
+        <h1 id="h1_search">Loans:</h1>
+        {% for loan in books_borrowed %}
+        <div class="forloop"> 
+            <h2>Loan {{loan.loanid}}</h1>
+            <p>Borrower ID: {{loan.borrowerid}}</p>
+            <p>Book ID: {{loan.bookid}}</p>
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}

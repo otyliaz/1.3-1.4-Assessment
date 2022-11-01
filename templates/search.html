@@ -4,7 +4,7 @@
     <div class="content" id="content_search">
         <h1 id="h1_search">Here's what we found that matches "{{searchterm}}"</h1>
         {% for book in books %}
-        <div class="book"> 
+        <div class="forloop"> 
             <h2 id="booktitle">{{book.title}}</h2>
             <p>Author: {{book.author}}</p>
             <p>Book ID: {{book.bookid}}</p>

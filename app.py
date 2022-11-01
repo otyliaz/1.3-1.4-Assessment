@@ -98,8 +98,12 @@ def borrow(bookid):
 
 @app.route('/loans')
 def loans():
-    
-    return render_template('loans.html')
+
+    conn = get_db_connection()
+    books_borrowed = conn.execute('SELECT * FROM books_borrowed',).fetchall()
+    conn.close()
+
+    return render_template('loans.html', books_borrowed=books_borrowed)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
