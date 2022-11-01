@@ -72,6 +72,7 @@ def delete():
 def borrow(bookid):
     bookid=(int(bookid))
 
+    #print('hi')
     if request.method == 'POST':
         borrow_fname = request.form['fname']
         borrow_lname = request.form['lname']
@@ -82,17 +83,21 @@ def borrow(bookid):
         conn = get_db_connection()
         conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
         conn.commit()
+
+        search = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ?', (borrow_fname,))
+        borrowerid = search.fetchone()
+        int_borrowerid= int(borrowerid[0])
+        print(int_borrowerid)
+
+        conn.execute('INSERT INTO books_borrowed(bookid , borrowerid ) VALUES (?,?)', (bookid, int_borrowerid,))
+        conn.commit()
         conn.close()
+
 
     return render_template('borrow.html', bookid=bookid)
 
 @app.route('/loans')
 def loans():
-    conn = get_db_connection()
-        #how do i get the bookid and borrowerid 
-    conn.execute('INSERT INTO books_borrowed(bookid , borrowerid ) VALUES ( ( SELECT bookid FROM books WHERE bookid = "?" ) , bookid( SELECT borrowerid FROM borrowers WHERE borrowerid = "?" ))', (borrowerid,bookid))
-    conn.commit()
-    conn.close()
     
     return render_template('loans.html')
 
