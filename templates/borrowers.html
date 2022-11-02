@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% block title %}Explore{% endblock %}
+
+{% block menu%}
+<div class="menu">
+    <li><a href="/explore">Explore</a></li>
+    <li><a href="/add">Add book</a></li>
+    <li><a href="/delete">Delete book</a></li>
+    <li><a href="/borrowers" class="active_page">Borrowers</a></li>
+    <li><a href="/loans">Loans</a></li>
+</div>
+{% endblock%}
+
+{% block content%}
+    <div class="content" id="content_search">
+        <h1 id="h1_search">Borrowers:</h1>
+        {% for user in borrowers %}
+        <div class="forloop"> 
+            <h2 id="booktitle">{{user.fname}} {{user.lname}}</h1>
+            <p>Phone Number: {{user.phone_number}}</p>
+            <p>Address: {{user.address}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Borrower ID: {{user.borrowerid}}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

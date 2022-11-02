@@ -3,10 +3,11 @@
 
 {% block menu%}
 <div class="menu">
-    <li><a href="/explore" class="active_page">Explore</a></li>
+    <li><a href="/explore">Explore</a></li>
     <li><a href="/add">Add book</a></li>
     <li><a href="/delete">Delete book</a></li>
-    <li><a href="/loans">Loans</a></li>
+    <li><a href="/borrowers">Borrowers</a></li>
+    <li><a href="/loans" class="active_page">Loans</a></li>
 </div>
 {% endblock%}
 
@@ -15,7 +16,7 @@
         <h1 id="h1_search">Loans:</h1>
         {% for loan in books_borrowed %}
         <div class="forloop"> 
-            <h2>Loan {{loan.loanid}}</h1>
+            <h2 id="booktitle">Loan {{loan.loanid}}</h1>
             <p>Borrower ID: {{loan.borrowerid}}</p>
             <p>Book ID: {{loan.bookid}}</p>
         </div>

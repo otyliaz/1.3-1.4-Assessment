@@ -96,6 +96,14 @@ def borrow(bookid):
 
     return render_template('borrow.html', bookid=bookid)
 
+@app.route('/borrowers')
+def borrowers():
+    conn = get_db_connection()
+    borrowers = conn.execute('SELECT * FROM borrowers',).fetchall()
+    conn.close()
+    
+    return render_template('borrowers.html', borrowers=borrowers)
+
 @app.route('/loans')
 def loans():
 
