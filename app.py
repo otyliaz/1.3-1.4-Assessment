@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
-from datetime import datetime
+from datetime import date, timedelta
 
 app = Flask(__name__)
+
+today = date.today()
 
 def get_db_connection():
     conn = sqlite3.connect('sqlite/booksdb.sdb')
@@ -72,7 +74,6 @@ def delete():
 def borrow(bookid):
     bookid=(int(bookid))
 
-    #print('hi')
     if request.method == 'POST':
         borrow_fname = request.form['fname']
         borrow_lname = request.form['lname']
@@ -87,9 +88,14 @@ def borrow(bookid):
         search = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ?', (borrow_fname,))
         borrowerid = search.fetchone()
         int_borrowerid= int(borrowerid[0])
-        print(int_borrowerid)
+        # print(int_borrowerid)
 
-        conn.execute('INSERT INTO books_borrowed(bookid , borrowerid ) VALUES (?,?)', (bookid, int_borrowerid,))
+        today = date.today()
+
+        return_date = date.today()+timedelta(days=28)
+        print(return_date)
+
+        conn.execute('INSERT INTO books_borrowed(bookid , borrowerid, loan_date, return_date) VALUES (?,?,?,?)', (bookid, int_borrowerid, today, return_date))
         conn.commit()
         conn.close()
 
@@ -101,12 +107,11 @@ def borrowers():
     conn = get_db_connection()
     borrowers = conn.execute('SELECT * FROM borrowers',).fetchall()
     conn.close()
-    
+
     return render_template('borrowers.html', borrowers=borrowers)
 
 @app.route('/loans')
 def loans():
-
     conn = get_db_connection()
     books_borrowed = conn.execute('SELECT * FROM books_borrowed',).fetchall()
     conn.close()
