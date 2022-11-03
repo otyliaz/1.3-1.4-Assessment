@@ -85,7 +85,7 @@ def borrow(bookid):
         conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
         conn.commit()
 
-        search = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ?', (borrow_fname,))
+        search = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ? AND lname= ?', (borrow_fname, borrow_lname,))
         borrowerid = search.fetchone()
         int_borrowerid= int(borrowerid[0])
         # print(int_borrowerid)
@@ -113,7 +113,7 @@ def borrowers():
 @app.route('/loans')
 def loans():
     conn = get_db_connection()
-    books_borrowed = conn.execute('SELECT * FROM books_borrowed',).fetchall()
+    books_borrowed = conn.execute('SELECT books_borrowed.loanid, books.title, books_borrowed.borrowerid, books.bookid, borrowers.fname, borrowers.lname, books_borrowed.loan_date, books_borrowed.return_date FROM books_borrowed JOIN books ON books_borrowed.bookid=books.bookid JOIN borrowers ON books_borrowed.borrowerid=borrowers.borrowerid',).fetchall()
     conn.close()
 
     return render_template('loans.html', books_borrowed=books_borrowed)
