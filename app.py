@@ -92,10 +92,10 @@ def borrow(bookid):
 
         today = date.today()
 
-        return_date = date.today()+timedelta(days=28)
+        return_date = date.today()+timedelta(days=14)
         print(return_date)
 
-        conn.execute('INSERT INTO books_borrowed(bookid , borrowerid, loan_date, return_date) VALUES (?,?,?,?)', (bookid, int_borrowerid, today, return_date))
+        conn.execute('INSERT INTO books_borrowed(bookid , borrowerid, loan_date, return_date, returned) VALUES (?,?,?,?,0)', (bookid, int_borrowerid, today, return_date))
         conn.commit()
         conn.close()
 
@@ -110,13 +110,27 @@ def borrowers():
 
     return render_template('borrowers.html', borrowers=borrowers)
 
-@app.route('/loans')
+@app.route('/loans', methods=['POST', 'GET'])
 def loans():
     conn = get_db_connection()
-    books_borrowed = conn.execute('SELECT books_borrowed.loanid, books.title, books_borrowed.borrowerid, books.bookid, borrowers.fname, borrowers.lname, books_borrowed.loan_date, books_borrowed.return_date FROM books_borrowed JOIN books ON books_borrowed.bookid=books.bookid JOIN borrowers ON books_borrowed.borrowerid=borrowers.borrowerid',).fetchall()
-    conn.close()
+    books_borrowed = conn.execute('SELECT books_borrowed.loanid, books.title, books_borrowed.borrowerid, books.bookid, borrowers.fname, borrowers.lname, books_borrowed.loan_date, books_borrowed.return_date FROM books_borrowed JOIN books ON books_borrowed.bookid=books.bookid JOIN borrowers ON books_borrowed.borrowerid=borrowers.borrowerid WHERE books_borrowed.returned=0;',).fetchall()
+
+    if request.method == 'POST':
+        form_loanid = request.form['form_loanid']
+
+        print(form_loanid)
+
+        conn.execute('UPDATE books_borrowed SET returned = 1 WHERE loanid=?', (form_loanid,))
+        conn.commit()
+        conn.close()
+        
+        return redirect(url_for('return_success'))
 
     return render_template('loans.html', books_borrowed=books_borrowed)
+
+@app.route('/return_success')
+def return_success():
+    return render_template('return_success.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

@@ -227,22 +227,19 @@ p {
 }
 
 .forloop {
-    border: 2px;
-    border-color: #F78764;
-    padding: 5px;
-}
-
-label {
-    color: #E7EBEE;
-    font-size: 3vh;
-}
-
-.book {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     width: 500px;
     border: 5px solid #E7EBEE;
-    background: transparent;
+    background-color: #0d111750;
     margin: 10px 0px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+label {
+    color: #E7EBEE;
+    font-size: 3vh;
 }

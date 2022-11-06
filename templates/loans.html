@@ -16,11 +16,19 @@
         <h1 id="h1_search">Loans:</h1>
         {% for loan in books_borrowed %}
         <div class="forloop"> 
-            <h2 id="booktitle">Loan {{loan.loanid}}</h1>
+            <h2 id="booktitle">Loan {{loan.loanid}}</h2> 
             <p>Borrower: {{loan.fname}} {{loan.lname}}, ID: {{loan.borrowerid}}</p>
             <p>Book: {{loan.title}}, ID: {{loan.bookid}} </p>
             <p>Loan date: {{loan.loan_date}}</p>
             <p>Return date: {{loan.return_date}}</p>
+            
+            <div class="form">
+                <form action="" method="post"> 
+                    <input type="hidden" name="form_loanid" id="form_loanid" value="{{loan.loanid}}">
+                    <input type="submit" value="Return this book">
+                </form>
+            </div>
+
         </div>
         {% endfor %}
     </div>
