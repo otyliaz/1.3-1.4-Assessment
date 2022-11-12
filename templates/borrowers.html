@@ -1,4 +1,7 @@
 {% extends "home.html" %}
+
+{% block background %}<html lang="en">{% endblock %}
+
 {% block title %}Explore{% endblock %}
 
 {% block menu%}
@@ -13,7 +16,7 @@
 
 {% block content%}
     <div class="content">
-        <h1 id="h1_search">Borrowers:</h1>
+        <h2>Borrowers:</h2>
         {% for user in borrowers %}
         <div class="forloop"> 
             <h3>{{user.fname}} {{user.lname}}</h3>

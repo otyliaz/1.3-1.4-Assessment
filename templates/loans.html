@@ -1,5 +1,8 @@
 {% extends "home.html" %}
-{% block title %}Explore{% endblock %}
+
+{% block background %}<html lang="en">{% endblock %}
+    
+{% block title %}Loans{% endblock %}
 
 {% block menu%}
 <div class="menu">
@@ -21,11 +24,13 @@
             <p>Book: {{loan.title}}, ID: {{loan.bookid}} </p>
             <p>Loan date: {{loan.loan_date}}</p>
             <p>Return date: {{loan.return_date}}</p>
-            
+            {% if loan.return_date >= today %}
+                <p>OVERDUE!!!</p>
+            {% endif %}
             <div class="form">
                 <form action="" method="post"> 
                     <input type="hidden" name="form_loanid" id="form_loanid" value="{{loan.loanid}}">
-                    <input type="submit" value="Return this book">
+                    <input type="submit" id="return" value="Return this book">
                 </form>
             </div>
 

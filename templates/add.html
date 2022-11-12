@@ -1,5 +1,8 @@
 {% extends "home.html" %}
-{% block title %}Add a book to the database{% endblock %}
+
+{% block background %}<html lang="en">{% endblock %}
+
+{% block title %}Add a book{% endblock %}
 
 {% block menu%}
 <div class="menu">
@@ -13,18 +16,18 @@
 
 {% block content %}
 <div class="content">
-    <h2>Add a book</h2>
-    <div id="form_addbook">
+    <h2>Add a new book to the database!</h2>
+    <div class="form">
         <form action="" method="post">
-            <label for="title">Title:</label>
+            <label for="title">Title:</label><br>
             <input type="text" name="title" id="title" placeholder="Type here..." required> <br>
-            <label for="author">Author:</label>
+            <label for="author">Author:</label><br>
             <input type="text" name="author" id="author" placeholder="Type here..." required> <br>
-            <label for="year">Year Published:</label>
+            <label for="year">Year Published:</label><br>
             <input type="text" name="year" id="year" placeholder="Type here..."> <br>
-            <label for="language">Language:</label>
+            <label for="language">Language:</label><br>
             <input type="text" name="language" id="language" placeholder="Type here..."> <br>
-            <label for="isbn">ISBN:</label>
+            <label for="isbn">ISBN:</label><br>
             <input type="text" name="isbn" id="isbn" placeholder="Type here..." minlength="10" maxlength="13"> <br>
             <input type="submit" value="Enter book">
         </form>

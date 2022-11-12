@@ -6,24 +6,20 @@
 }
 
 /*BACKGROUND IMAGE home.html*/
-#html_home {
+html {
     margin: 0px;
+    background-color: #202022;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#html_home {
     background: url("../images/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-html {
-    margin: 0px;
-    background-color: #0d1117;
-    height: 100%;
-    background-size: cover;
-    overflow-x: hidden;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -103,7 +99,7 @@ h1 {
     font-family: "Book Antiqua";
     color: #A0CEC6;
     margin: 0px;
-    font-size: 10vh;
+    font-size: 65px;
     text-shadow: 2px 2px 5px black;
     margin-bottom: 20px;
 }
@@ -112,6 +108,8 @@ h1 {
 /*SEARCH BAR*/
 #search_container {
     display: block;
+    font-size: 0;
+    margin: 0;
 }
 
 #search_container input[type=text] {
@@ -119,6 +117,8 @@ h1 {
     font-size: 17px;
     border: 2px solid #ddd;
     background-color: #f2f5f8;
+    border-radius: 0;
+    width: 200px;
 }
 
 #search_container button {
@@ -130,14 +130,11 @@ h1 {
     border: 2px solid #ddd;
 }
 
-
 #search_container button:hover {
     background: #b4b4b4;
 }
 
-
-
-/*position of search.html content*/
+/*----other pages-------*/
 .content {
     position: relative;
     top: 20%;
@@ -147,16 +144,15 @@ h1 {
 }
 
 h2 {
-    margin-top: 0.5%;
-    margin-bottom: 1%;
+    margin-bottom: 30px;
     text-shadow: 1px 1px 5px #1b1b1bc0;
-    color: #E7EBEE;
-    font-size: 6vh;
+    color: #A0CEC6;
+    font-size: 40px;
 }
 
 h3 {
     color: #F79A7D;
-    font-size: 4vh;
+    font-size: 30px;
 }
 
 p {
@@ -179,9 +175,68 @@ p {
     margin-left: 5%;
 }
 
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #39672d;
+    border: none;
+    color: #E7EBEE;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.button:hover {
+    background-color: #214418;
+}
+
+/*borrow page*/
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 400px;
+}
+
 label {
     color: #E7EBEE;
-    font-size: 3vh;
+    font-size: 20px;
+}
+
+.form {
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+input[type=submit] {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #39672d;
+    border: none;
+    color: #E7EBEE;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+input[type=submit]:hover {
+    background-color: #214418;
+}
+
+/*success page*/
+a {
+    color: #E7EBEE;
+}
+
+/*loans*/
+#return {
+    margin: 0;
 }
 
 /*------------------------------*/

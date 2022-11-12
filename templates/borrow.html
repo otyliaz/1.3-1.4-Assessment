@@ -1,21 +1,25 @@
 {% extends "home.html" %}
-{% block title %}Borrow book {{bookid}}{% endblock %}
+
+{% block background %}<html lang="en">{% endblock %}
+
+{% block title %}Borrow '{{title}}'{% endblock %}
 
 {% block content%}
 <div class="content">
-    <h2>Borrow this book</h2>
-    <p>Enter your details below</p>
+    <h2>Borrow '{{title}}' </h2>
+    <p>Enter your details below.</p>
+    <p>If you have borrowed a book before, your first and last name will already be in the database.</p>
     <div class="form">
         <form action="" method="post">
-            <label for="fname">First Name:</label>
+            <label for="fname">First Name:</label> <br>
             <input type="text" name="fname" placeholder="Type here..." required><br>
-            <label for="lname">Last Name:</label>
+            <label for="lname">Last Name:</label> <br>
             <input type="text" name="lname" id="lname" placeholder="Type here..." required><br>
-            <label for="phonenum">Phone number:</label>
+            <label for="phonenum">Phone number:</label><br>
             <input type="text" name="phonenum" id="phonenum" placeholder="Type here..." required><br>
-            <label for="address">Address:</label>
+            <label for="address">Address:</label><br>
             <input type="text" name="address" id="address" placeholder="Type here..." required><br>
-            <label for="email">Email:</label>
+            <label for="email">Email:</label><br>
             <input type="text" name="email" id="email" placeholder="Type here..." required><br>
             <input type="submit" value="Borrow!">
         </form>

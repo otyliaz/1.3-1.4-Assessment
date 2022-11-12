@@ -1,5 +1,8 @@
 {% extends "home.html" %}
-{% block title %}delete a book from the database{% endblock %}
+
+{% block background %}<html lang="en">{% endblock %}
+
+{% block title %}Delete a book{% endblock %}
 
 {% block menu%}
 <div class="menu">
@@ -13,11 +16,13 @@
 
 {% block content %}
 <div class="content">
-    <h2>Remove a book:</h2>
-    <div id="form_removebook">
+    <h2>Remove a book from the database:</h2>
+    <p>Warning: this action cannot be undone.</p>
+
+    <div class="form">
         <form action="" method="post">
-            <label for="title">ID of book to remove:</label>
-            <input type="text" name="remove_id" id="remove_id" placeholder="Type here...">
+            <label for="title">ID of book to remove:</label> <br>
+            <input type="text" name="remove_id" id="remove_id" placeholder="Type here..."><br>
             <input type="submit" value="DELETE">
         </form>
     </div>

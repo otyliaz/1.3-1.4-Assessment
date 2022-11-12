@@ -53,7 +53,7 @@ def add():
         conn.commit()
         conn.close()
 
-        return redirect(url_for('return_success'))
+        return redirect(url_for('success'))
 
     return render_template('add.html')
 
@@ -69,28 +69,35 @@ def delete():
         conn.commit()
         conn.close()
 
-        return redirect(url_for('return_success'))
+        return redirect(url_for('success'))
     
     return render_template('delete.html')
-
 
 @app.route('/borrow/<int:bookid>', methods=['POST', 'GET'])
 def borrow(bookid):
     bookid=(int(bookid))
 
+    conn = get_db_connection()
+    select = conn.execute('SELECT title FROM books WHERE bookid = ?', (bookid,)).fetchone()
+    title=select[0]
+    
     if request.method == 'POST':
         borrow_fname = request.form['fname']
         borrow_lname = request.form['lname']
         borrow_phonenum = request.form['phonenum']
         borrow_address = request.form['address']
         borrow_email = request.form['email']
+        
+        search = conn.execute('SELECT * FROM borrowers WHERE fname LIKE ? AND lname LIKE ?',(borrow_fname, borrow_lname,)).fetchall()
+        rows = len(search)
 
-        conn = get_db_connection()
-        conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
-        conn.commit()
+        if rows == 0 :
 
-        search = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ? AND lname= ?', (borrow_fname, borrow_lname,))
-        borrowerid = search.fetchone()
+            conn.execute('INSERT INTO borrowers (fname, lname, phone_number, address, email) VALUES(?,?,?,?,?)', (borrow_fname, borrow_lname, borrow_phonenum, borrow_address, borrow_email,))
+            conn.commit()
+
+
+        borrowerid = conn.execute('SELECT borrowerid FROM borrowers WHERE fname = ? AND lname= ?', (borrow_fname, borrow_lname,)).fetchone()
         int_borrowerid= int(borrowerid[0])
         # print(int_borrowerid)
 
@@ -103,9 +110,9 @@ def borrow(bookid):
         conn.commit()
         conn.close()
 
-        return redirect(url_for('return_success'))
+        return redirect(url_for('success'))
 
-    return render_template('borrow.html', bookid=bookid)
+    return render_template('borrow.html', bookid=bookid, title=title)
 
 @app.route('/borrowers')
 def borrowers():
@@ -120,18 +127,18 @@ def loans():
     conn = get_db_connection()
     books_borrowed = conn.execute('SELECT books_borrowed.loanid, books.title, books_borrowed.borrowerid, books.bookid, borrowers.fname, borrowers.lname, books_borrowed.loan_date, books_borrowed.return_date FROM books_borrowed JOIN books ON books_borrowed.bookid=books.bookid JOIN borrowers ON books_borrowed.borrowerid=borrowers.borrowerid WHERE books_borrowed.returned=0;',).fetchall()
 
+    today=date.today()
+
     if request.method == 'POST':
         form_loanid = request.form['form_loanid']
-
-        print(form_loanid)
 
         conn.execute('UPDATE books_borrowed SET returned = 1 WHERE loanid=?', (form_loanid,))
         conn.commit()
         conn.close()
         
         return redirect(url_for('success'))
-
-    return render_template('loans.html', books_borrowed=books_borrowed)
+        
+    return render_template('loans.html', books_borrowed=books_borrowed, today=today)
 
 @app.route('/success')
 def success():

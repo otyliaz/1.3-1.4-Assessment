@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="html_home">
+{% block background %}<html lang="en" id="html_home"> {% endblock %}
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}My library{% endblock %}</title>
@@ -27,7 +27,7 @@
                         <li><a href="/borrowers">Borrowers</a></li>
                         <li><a href="/loans">Loans</a></li>
                     </div>
-                    {% endblock%}
+                    {% endblock %}
                 </ul>
             </nav>
          </header>

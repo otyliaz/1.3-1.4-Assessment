@@ -1,4 +1,5 @@
 {% extends "home.html" %}
+
 {% block title %}Explore{% endblock %}
 
 {% block menu%}
@@ -13,7 +14,7 @@
 
 {% block content%}
     <div class="content">
-        <h2>Here are all the books in my collection :0</h2>
+        <h2>Here are all the books in my collection:</h2>
         {% for book in books %}
         <div class="forloop"> 
             <h3>{{book.title}}</h3>
@@ -31,8 +32,8 @@
                 <p>ISBN: {{book.isbn}}</p>
             {% endif %}
             
-            <div id="borrow_button">
-                <a href="{{ url_for('borrow', bookid=book.bookid) }}"><button type="button">BORROW</button></a>
+            <div>
+                <a href="{{ url_for('borrow', bookid=book.bookid) }}"><button type="button" class="button">Borrow NOW!</button></a>
             </div>
             
         </div>

@@ -1,28 +1,39 @@
 {% extends "home.html" %}
+
+{% block background %}<html lang="en">{% endblock %}
+
 {% block title %}Search results for: {{searchterm}}{% endblock %}
 {% block content%}
     <div class="content">
         <h2>Here's what we found that matches "{{searchterm}}":</h2>
-        {% for book in books %}
-        <div class="forloop"> 
-            <h3>{{book.title}}</h3>
-            <p>Author: {{book.author}}</p>
-            <p>Book ID: {{book.bookid}}</p>
-            {% if not book.year_published %}
-                <p>Year Published: Unknown</p> 
-            {% else %}
-                <p>{{book.year_published}}</p>
-            {% endif %}
-            <p>Language: {{book.language}}</p>
-            {% if not book.isbn%}
-                <p>ISBN: Unknown</p>
-            {% else %}
-                <p>ISBN: {{book.isbn}}</p>
-            {% endif %}
-            <div id="borrow_button">
-                <a href="{{ url_for('borrow', bookid=book.bookid) }}"><button type="button">BORROW</button></a>
+        {% if books%}
+
+            {% for book in books %}
+            <div class="forloop"> 
+                <h3>{{book.title}}</h3>
+                <p>Author: {{book.author}}</p>
+                <p>Book ID: {{book.bookid}}</p>
+                {% if not book.year_published %}
+                    <p>Year Published: Unknown</p> 
+                {% else %}
+                    <p>{{book.year_published}}</p>
+                {% endif %}
+                <p>Language: {{book.language}}</p>
+                {% if not book.isbn%}
+                    <p>ISBN: Unknown</p>
+                {% else %}
+                    <p>ISBN: {{book.isbn}}</p>
+                {% endif %}
+                <div>
+                    <a href="{{ url_for('borrow', bookid=book.bookid) }}"><button type="button" class="button">Borrow NOW!</button></a>
+                </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+
+        {% else %}
+            <p>Your search did not match anything in the database.</p>
+            <p>Make sure all words are spelled correctly, or try searching with different key words.</p>
+        {% endif %}
+
     </div>
 {% endblock %}

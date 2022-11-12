@@ -1,20 +1,14 @@
 {% extends "home.html" %}
-{% block title %}Explore{% endblock %}
 
-{% block menu%}
-<div class="menu">
-    <li><a href="/explore">Explore</a></li>
-    <li><a href="/add">Add book</a></li>
-    <li><a href="/delete">Delete book</a></li>
-    <li><a href="/borrowers">Borrowers</a></li>
-    <li><a href="/loans">Loans</a></li>
-</div>
-{% endblock%}
+{% block background %}<html lang="en">{% endblock %}
+
+{% block title %}Operation successful{% endblock %}
 
 {% block content%}
     <div class="content">
-        <h2>The operation was successful</h2>
-        <a href="/home">Return to home?</a>
+        <h2>Form submitted successfully</h2>
+        <p>The information you entered is now in the database.</p>
+        <p>Click <a href="/">here</a>, or the logo in the corner to return to the homepage.</p>
     </div>
 {% endblock %}
     
