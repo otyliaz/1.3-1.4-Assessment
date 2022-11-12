@@ -53,6 +53,8 @@ def add():
         conn.commit()
         conn.close()
 
+        return redirect(url_for('return_success'))
+
     return render_template('add.html')
 
 #delete book
@@ -66,6 +68,8 @@ def delete():
         conn.execute('DELETE FROM books WHERE bookid = ?', (remove_id,))
         conn.commit()
         conn.close()
+
+        return redirect(url_for('return_success'))
     
     return render_template('delete.html')
 
@@ -99,6 +103,7 @@ def borrow(bookid):
         conn.commit()
         conn.close()
 
+        return redirect(url_for('return_success'))
 
     return render_template('borrow.html', bookid=bookid)
 
@@ -124,13 +129,13 @@ def loans():
         conn.commit()
         conn.close()
         
-        return redirect(url_for('return_success'))
+        return redirect(url_for('success'))
 
     return render_template('loans.html', books_borrowed=books_borrowed)
 
-@app.route('/return_success')
-def return_success():
-    return render_template('return_success.html')
+@app.route('/success')
+def success():
+    return render_template('success.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

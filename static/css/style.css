@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 /*BACKGROUND IMAGE home.html*/
@@ -22,6 +23,7 @@ html {
     height: 100%;
     background-size: cover;
     overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -29,22 +31,20 @@ body {
 }
 
 /*NAV BAR*/
-
-/*LOGO*/
-
 header {
     width: 100%;
     z-index: 2;
-    position: fixed;
 }
 
 nav {
+    width: 100%;
     box-shadow: 0 2px 4px 0 #050a10;  
-    position: sticky;
+    position: fixed;
+    z-index: inherit;
 }
 
 .navbar {
-    font-family: monospace;
+    font-family: monospace, monospace;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,17 +80,111 @@ li {
 }
 
 /*RESPONSIVE NAVBAR*/
-/* CHECKBOX THING */
+/* CHECKBOX */
 input[type=checkbox] {
     display: none;
 } 
 
-/*HAMBURGER*/
 .hamburger {
     display: none;
     font-size: 24px;
     user-select: none;
 }
+
+/*----------------*/
+
+/*home.html*/
+#content_home {
+    top: 30%;
+    left: 10%;
+}
+
+h1 {
+    font-family: "Book Antiqua";
+    color: #A0CEC6;
+    margin: 0px;
+    font-size: 10vh;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 20px;
+}
+
+
+/*SEARCH BAR*/
+#search_container {
+    display: block;
+}
+
+#search_container input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: 2px solid #ddd;
+    background-color: #f2f5f8;
+}
+
+#search_container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: 2px solid #ddd;
+}
+
+
+#search_container button:hover {
+    background: #b4b4b4;
+}
+
+
+
+/*position of search.html content*/
+.content {
+    position: relative;
+    top: 20%;
+    left: 5%;
+    z-index: 1;
+    padding-bottom: 10px;
+}
+
+h2 {
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+    text-shadow: 1px 1px 5px #1b1b1bc0;
+    color: #E7EBEE;
+    font-size: 6vh;
+}
+
+h3 {
+    color: #F79A7D;
+    font-size: 4vh;
+}
+
+p {
+    color: #E7EBEE;
+    font-size: 20px;
+}
+
+.forloop {
+    display: block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 500px;
+    border: 5px solid #E7EBEE;
+    background-color: #0d111750;
+    margin: 10px 0px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
+label {
+    color: #E7EBEE;
+    font-size: 3vh;
+}
+
+/*------------------------------*/
 
 /* APPLYING MEDIA QUERIES */
 /*BIG SCREENS*/
@@ -121,11 +215,11 @@ input[type=checkbox] {
         width: 30px;
         height: 30px;
     }
-    /*maybe transform logo on hover*/
 }
 
 /*SMALL SCREENS*/
 @media screen and (max-width: 768px) {
+
    .menu { 
         display:none;
         position: absolute;
@@ -169,77 +263,4 @@ input[type=checkbox] {
         width: 25px;
         height: 25px;
     }
-    /*maybe transform logo on hover*/
-}
-
-/*search bar on home.html*/
-form {
-    margin-top: 0.5%;
-}
-
-/*position of home.html content*/
-.content {
-    position: relative;
-    top: 35%;
-    left: 10%;
-    z-index: 1;
-    padding-bottom: 10px;
-}
-
-/*position of search.html content*/
-#content_search {
-    top: 20%;
-    left: 5%;
-    margin-bottom: 50%;
-    z-index: 1;
-}
-
-/*fonts and colours and sizes*/
-#h1_search {
-    color: #E7EBEE;
-    font-size: 6vh;
-}
-
-h1 {
-    font-family: "Book Antiqua";
-    color: #cc9be6;
-    margin: 0px;
-    font-size: 10vh;
-    text-shadow: 2px 2px 5px black;
-}
-
-h2 {
-    font-size: 5vh;
-    color: #E7EBEE;
-    margin-top: 0.5%;
-    margin-bottom: 1%;
-    text-shadow: 1px 1px 5px #1b1b1bd8;
-}
-
-#booktitle {
-    color: #F78764;
-    font-size: 4vh;
-}
-
-p {
-    color: #E7EBEE;
-    font-size: 3vh;
-}
-
-.forloop {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    width: 500px;
-    border: 5px solid #E7EBEE;
-    background-color: #0d111750;
-    margin: 10px 0px;
-    margin-bottom: 20px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-label {
-    color: #E7EBEE;
-    font-size: 3vh;
 }

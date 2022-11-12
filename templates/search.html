@@ -1,11 +1,11 @@
 {% extends "home.html" %}
-{% block title %}Search results for: {{term}}{% endblock %}
+{% block title %}Search results for: {{searchterm}}{% endblock %}
 {% block content%}
-    <div class="content" id="content_search">
-        <h1 id="h1_search">Here's what we found that matches "{{searchterm}}"</h1>
+    <div class="content">
+        <h2>Here's what we found that matches "{{searchterm}}":</h2>
         {% for book in books %}
         <div class="forloop"> 
-            <h2 id="booktitle">{{book.title}}</h2>
+            <h3>{{book.title}}</h3>
             <p>Author: {{book.author}}</p>
             <p>Book ID: {{book.bookid}}</p>
             {% if not book.year_published %}

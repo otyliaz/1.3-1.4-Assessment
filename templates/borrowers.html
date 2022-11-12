@@ -12,11 +12,11 @@
 {% endblock%}
 
 {% block content%}
-    <div class="content" id="content_search">
+    <div class="content">
         <h1 id="h1_search">Borrowers:</h1>
         {% for user in borrowers %}
         <div class="forloop"> 
-            <h2 id="booktitle">{{user.fname}} {{user.lname}}</h1>
+            <h3>{{user.fname}} {{user.lname}}</h3>
             <p>Phone Number: {{user.phone_number}}</p>
             <p>Address: {{user.address}}</p>
             <p>Email: {{user.email}}</p>

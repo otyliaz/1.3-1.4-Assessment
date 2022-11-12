@@ -4,6 +4,7 @@
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}My library{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="../static/images/favicon.png">
     </head>
     <body>
@@ -31,13 +32,13 @@
             </nav>
          </header>
         {% block content %}
-        <div class="content">
-            <h1>My Library</h1>
-            <div class="form">
+        <div class="content" id="content_home">
+            <h1>Welcome to my library!</h1>
+            <p id="label">Enter a key word to search for a book!</p>
+            <div class="form" id="search_container">
                 <form action="" method="post">
-                    <label for="search"><h2>Enter a key word to search for a book!</h2></label>
-                    <input type="text" name="search" id="search" placeholder="Type here..." required>
-                    <input type="submit" value="Search!">
+                    <input type="text" name="search" id="search" placeholder="Search..." required>
+                    <button type="submit" id="search_button"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </div>

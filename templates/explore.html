@@ -12,11 +12,11 @@
 {% endblock%}
 
 {% block content%}
-    <div class="content" id="content_search">
-        <h1 id="h1_search">Here are all the books in my collection :0</h1>
+    <div class="content">
+        <h2>Here are all the books in my collection :0</h2>
         {% for book in books %}
         <div class="forloop"> 
-            <h2 id="booktitle">{{book.title}}</h2>
+            <h3>{{book.title}}</h3>
             <p>Author: {{book.author}}</p>
             <p>Book ID: {{book.bookid}}</p>
             {% if not book.year_published %}

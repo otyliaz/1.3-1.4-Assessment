@@ -12,11 +12,11 @@
 {% endblock%}
 
 {% block content%}
-    <div class="content" id="content_search">
-        <h1 id="h1_search">Loans:</h1>
+    <div class="content">
+        <h2>Loans:</h2>
         {% for loan in books_borrowed %}
         <div class="forloop"> 
-            <h2 id="booktitle">Loan {{loan.loanid}}</h2> 
+            <h3>Loan {{loan.loanid}}</h3> 
             <p>Borrower: {{loan.fname}} {{loan.lname}}, ID: {{loan.borrowerid}}</p>
             <p>Book: {{loan.title}}, ID: {{loan.bookid}} </p>
             <p>Loan date: {{loan.loan_date}}</p>
