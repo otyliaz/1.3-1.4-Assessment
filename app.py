@@ -126,7 +126,7 @@ def borrowers():
 def loans():
     conn = get_db_connection()
     books_borrowed = conn.execute('SELECT books_borrowed.loanid, books.title, books_borrowed.borrowerid, books.bookid, borrowers.fname, borrowers.lname, books_borrowed.loan_date, books_borrowed.return_date FROM books_borrowed JOIN books ON books_borrowed.bookid=books.bookid JOIN borrowers ON books_borrowed.borrowerid=borrowers.borrowerid WHERE books_borrowed.returned=0;',).fetchall()
-
+    
     today=date.today()
 
     if request.method == 'POST':
@@ -144,5 +144,14 @@ def loans():
 def success():
     return render_template('success.html')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+    
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=False)
